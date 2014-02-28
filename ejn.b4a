@@ -1,0 +1,150 @@
+﻿Version=3
+IconFile=
+NumberOfModules=4
+Module1=exercises
+ModuleVisible1=1
+Module2=authentication
+ModuleVisible2=1
+Module3=library
+ModuleVisible3=1
+Module4=about
+ModuleVisible4=1
+Package=org.jnrain.handyjn
+DoNotOverwriteManifest=False
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.basic4ppc.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="14"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetActivityAttribute(Main, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(exercises, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(authentication, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(library, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(about, android:screenOrientation, "portrait") ~\n~'End of default text.~\n~
+UserTypesHint=
+NumberOfFiles=8
+File1=20130828.jpg
+File2=about.bal
+File3=auth.bal
+File4=eblue.jpg
+File5=exercises.bal
+File6=lib.bal
+File7=links.html
+File8=main.bal
+NumberOfLibraries=3
+Library1=core
+Library2=httputils2
+Library3=stringutils
+@EndOfDesignText@
+#Region Module Attributes
+	#FullScreen: False
+	#IncludeTitle: False
+	#ApplicationLabel: 掌上江南
+	#VersionCode: 1
+	#VersionName: 
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+'Activity module
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+
+	Dim Button1 As Button
+	Dim Button2 As Button
+	Dim Button3 As Button
+	Dim Button4 As Button
+	Dim Button5 As Button
+	Dim Button6 As Button
+	Dim Button7 As Button
+	Dim Button8 As Button
+	Dim Button9 As Button
+	Dim Panel1 As Panel
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'Do not forget to load the layout file created with the visual designer. For example:
+	Activity.LoadLayout("main")
+	Activity.AddMenuItem("关于","about")
+	Activity.AddMenuItem("退出","Quit")
+
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub Quit_Click
+   ExitApplication
+End Sub
+
+
+Sub about_Click
+   StartActivity(about)
+End Sub
+
+
+Sub Button2_Click
+    StartActivity(library)
+End Sub
+
+Sub Button1_Click
+    StartActivity(exercises)
+End Sub
+
+Sub Button9_Click
+    ToastMessageShow("将用系统浏览器访问视频网址",False)
+	Dim Intent1 As Intent
+    Intent1.Initialize2("http://202.195.144.34/", 0)
+    StartActivity(Intent1) 
+End Sub
+
+Sub Button8_Click
+    File.Copy(File.DirAssets,"20130828.jpg",File.DirRootExternal,"map.jpg")
+    Dim i As Intent 
+    i.Initialize(i.ACTION_VIEW,"file:///sdcard/map.jpg")
+    i.SetType("image/*")
+    StartActivity(i)
+End Sub
+
+Sub Button7_Click
+	File.Copy(File.DirAssets,"links.html",File.DirRootExternal,"links.html")
+    Dim i As Intent 
+    i.Initialize(i.ACTION_VIEW,"file:///sdcard/links.html")
+    i.SetType("text/html")
+    StartActivity(i)
+End Sub
+
+Sub Button6_Click
+	Msgbox("该功能暂不开放","掌上江南")
+End Sub
+
+Sub Button5_Click
+	ToastMessageShow("将用系统浏览器访问查询网址",False)
+	Dim Intent1 As Intent
+    Intent1.Initialize2("http://202.195.144.168/zs/jwxt/Demo_kjscx.aspx", 0)
+    StartActivity(Intent1) 
+End Sub
+
+Sub Button4_Click
+    Dim result As Int
+    result = Msgbox2("选择外网还是内网？", "选择", "外网", "", "内网",Null)
+    If result = DialogResponse.Positive Then  
+	    '外网
+		ToastMessageShow("将用系统浏览器访问查询网址",False)
+	    Dim Intent1 As Intent
+        Intent1.Initialize2("http://61.177.142.238:8000/CPES_LC/", 0)
+        StartActivity(Intent1) 
+	Else
+	    '内网
+	    ToastMessageShow("将用系统浏览器访问查询网址",False)
+	    Dim Intent1 As Intent
+        Intent1.Initialize2("http://mypower.jiangnan.edu.cn/CPES_LC/", 0)
+        StartActivity(Intent1) 
+	End If
+End Sub
+
+Sub Button3_Click
+	StartActivity(authentication)
+End Sub
