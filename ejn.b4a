@@ -11,7 +11,7 @@ Module4=about
 ModuleVisible4=1
 Package=org.jnrain.handyjn
 DoNotOverwriteManifest=False
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.basic4ppc.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="14"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetActivityAttribute(Main, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(exercises, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(authentication, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(library, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(about, android:screenOrientation, "portrait") ~\n~'End of default text.~\n~
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.basic4ppc.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="14"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetActivityAttribute(Main, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(exercises, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(authentication, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(library, android:screenOrientation, "portrait") ~\n~SetActivityAttribute(about, android:screenOrientation, "portrait") ~\n~'End of default text.~\n~AddApplicationText(<activity android:name="anywheresoftware.b4a.objects.preferenceactivity"/>)
 UserTypesHint=
 NumberOfFiles=8
 File1=20130828.jpg
@@ -22,10 +22,11 @@ File5=exercises.bal
 File6=lib.bal
 File7=links.html
 File8=main.bal
-NumberOfLibraries=3
+NumberOfLibraries=4
 Library1=core
 Library2=httputils2
-Library3=stringutils
+Library3=preferenceactivity
+Library4=stringutils
 @EndOfDesignText@
 #Region Module Attributes
 	#FullScreen: False
@@ -41,6 +42,7 @@ Library3=stringutils
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
+
 End Sub
 
 Sub Globals
@@ -57,10 +59,12 @@ Sub Globals
 	Dim Button8 As Button
 	Dim Button9 As Button
 	Dim Panel1 As Panel
+
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
+
 	Activity.LoadLayout("main")
 	Activity.AddMenuItem("关于","about")
 	Activity.AddMenuItem("退出","Quit")
@@ -148,3 +152,5 @@ End Sub
 Sub Button3_Click
 	StartActivity(authentication)
 End Sub
+
+
